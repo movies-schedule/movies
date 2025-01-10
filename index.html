@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Киноафиша</title> 
+    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
+</head> 
+<body> 
+    <div class="container"> 
+        <div class="search-bar"> 
+            <input type="text" id="search-input" placeholder="Поиск по названию"> 
+        </div> 
+        <div class="sort-bar"> 
+            <span>Сортировать по:</span> 
+            <button id="sort-year" class="active">Году</button> 
+            <button id="sort-rating">Рейтингу</button> 
+        </div> 
+        <div class="movie-block" id="movie-block"> 
+        </div> 
+    </div>
+    <script type="module" src="script.js"></script>
+</body> 
+</html>
