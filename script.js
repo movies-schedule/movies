@@ -67,6 +67,7 @@ async function init() {
     const sortRatingButton = document.getElementById('sort-rating');
 
     sortMovies(movies, 'year'); 
+    await displayMovies(movies);
     
     searchInput.addEventListener('input', async () => { 
         const searchTerm = searchInput.value.toLowerCase(); 
