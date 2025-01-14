@@ -289,7 +289,7 @@ body {
     gap: 5px;
 }
 .movie-details-buttons .button {
-    width: 343px;
+    width: 95%;
     height: 36px;
     font-size: 0.7em;
     padding: 10px;
@@ -303,24 +303,6 @@ body {
 .movie-details-buttons .button:hover {
     background: rgba(255, 255, 255, 0.2);
     color: #fff;
-}
-.movie-details-buttons .a{
-    width: 300px;
-    height: 12px;
-    background: #2c003e; 
-    color: #fff; 
-    border: 2px solid #fff; 
-    padding: 10px 20px; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    transition: background 0.4s; 
-    text-align: center;
-    text-decoration: none;
-    font-size: 0.7em;
-}
-.movie-details-buttons .a:hover {
-    background: #fff; 
-    color: #2c003e; 
 }
 .movie.active .movie-details { 
     display: block; 
