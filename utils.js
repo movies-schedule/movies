@@ -1,4 +1,4 @@
-const appUrl = 'https://3de2-104-196-236-161.ngrok-free.app';
+export const appUrl = `https://d49a-34-48-90-89.ngrok-free.app`;
 
 export async function fetchMovies() { 
     const response = await fetch(`${appUrl}/get-movies`, {
@@ -28,4 +28,50 @@ export function sortMovies(movies, criteria) {
         movies.sort((a, b) => b.imdb_rating - a.imdb_rating); 
     } 
     return movies; 
+}
+
+export function displaySchedule(movieId) {
+    const schedulePanel = document.createElement('div');
+    schedulePanel.classList.add('schedule-panel');
+    schedulePanel.innerHTML = `
+        <h3>Расписание</h3>
+        <button id="close-schedule">Закрыть</button>
+        <div class="schedule-times">
+          <div class="loading-animation" id="loading-animation-schedule"></div>
+        </div>
+    `;
+
+    const scheduleTimes = schedulePanel.querySelector('.schedule-times');
+    const loadingAnimation = schedulePanel.querySelector('#loading-animation-schedule');
+
+    document.body.appendChild(schedulePanel);
+
+    const closeButton = document.getElementById('close-schedule');
+    closeButton.addEventListener('click', () => {
+        document.body.removeChild(schedulePanel);
+    });
+    
+    loadingAnimation.style.display = 'block';
+    fetch(`${appUrl}/schedule`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'ngrok-skip-browser-warning': '69420'
+        },
+        body: JSON.stringify({ data: movieId })
+    })
+    .then(response => response.json())
+    .then(scheduleData => {
+        loadingAnimation.style.display = 'none';
+        for (const [cinema, times] of Object.entries(scheduleData.response)) {
+            const cinemaSchedule = document.createElement('div');
+            cinemaSchedule.innerHTML = `<strong>${cinema}:</strong> ${times.join(', ')}`;
+            scheduleTimes.appendChild(cinemaSchedule);
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка при получении расписания:', error);
+        loadingAnimation.style.display = 'none';
+        scheduleTimes.innerHTML = 'Произошла ошибка при загрузке расписания.';
+    });
 }
