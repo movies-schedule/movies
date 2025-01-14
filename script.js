@@ -26,8 +26,8 @@ async function displayMovies(movies) {
               <div class="loading-animation"></div>
               <div class="movie-details-text"></div>
               <div class="movie-details-buttons">
-                <a href="https://kino.mail.ru${movie.url}#ticket" class="a">Купить Билеты</a>
-                <a href="https://kino.mail.ru${movie.url}#trailer" class="a">Смотреть Трейлер</a>
+                <form action="https://kino.mail.ru${movie.url}#ticket"><button class="button">Купить билеты</button></form>
+                <form action="https://kino.mail.ru${movie.url}#trailer"><button class="button">Смотреть трейлер</button></form>
                 <button class="button" id="schedule-button-${movie.id}">Смотреть расписание</button>
               </div>
             </div>
