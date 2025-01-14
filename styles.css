@@ -289,7 +289,7 @@ body {
     gap: 5px;
 }
 .movie-details-buttons .button {
-    width: 92.5%;
+    width: 343px;
     height: 36px;
     font-size: 0.7em;
     padding: 10px;
@@ -305,7 +305,7 @@ body {
     color: #fff;
 }
 .movie-details-buttons .a{
-    width: 80%;
+    width: 300px;
     height: 12px;
     background: #2c003e; 
     color: #fff; 
