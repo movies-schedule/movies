@@ -207,12 +207,12 @@ body {
     display: flex; 
     flex-wrap: wrap; 
     gap: 20px; 
-} 
+}
 .movie {
     background: linear-gradient(135deg, #3e005c, #2c003e);
     border-radius: 10px;
     overflow: hidden;
-    width: 100%;
+    width: calc(25% - 20px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s; 
     display: flex;
@@ -220,6 +220,21 @@ body {
     justify-content: space-between;
     cursor: pointer;
     position: relative;
+}
+@media (max-width: 1200px) { 
+    .movie { 
+        width: calc(33.33% - 20px);
+    } 
+}
+@media (max-width: 900px) { 
+    .movie { 
+        width: calc(50% - 20px);
+    } 
+}
+@media (max-width: 600px) { 
+    .movie { 
+        width: 100%;
+    } 
 }
 .movie-content {
     display: flex;
@@ -308,9 +323,4 @@ body {
     display: block; 
     opacity: 1;
     transform: translateY(0);
-} 
-@media (min-width: 768px) { 
-    .movie { 
-        width: calc(50% - 10px); 
-    } 
 }
