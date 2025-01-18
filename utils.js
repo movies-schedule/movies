@@ -1,4 +1,4 @@
-export const appUrl = `https://4f9d-34-59-147-220.ngrok-free.app`;
+export const appUrl = `https://4f9d-34-59-147-220.ngrok-free.app`
 
 export async function fetchMovies() { 
     const response = await fetch(`${appUrl}/get-movies`, {
@@ -8,6 +8,17 @@ export async function fetchMovies() {
     }); 
     const data = await response.json(); 
     return data.data.events; 
+}
+
+export async function fetchLink(movieUrl) {
+    const parsedUrl = movieUrl.split('/')[3];
+    const response = await fetch(`${appUrl}/movie-link/${parsedUrl}`, {
+        headers: {
+            'ngrok-skip-browser-warning': '69420'
+        }
+    });
+    const data = await response.json();
+    return data.link;
 }
 
 export async function fetchDescription(movieUrl) {
