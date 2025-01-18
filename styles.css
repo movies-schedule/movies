@@ -159,22 +159,24 @@ body {
     margin: 0 auto; 
     padding: 20px 0; 
 }
-.search-bar { 
+.search-bar {     
     margin-bottom: 20px; 
-    background: #3e005c; 
+    background: #3e005c;     
     padding: 10px; 
-    border-radius: 10px; 
+    border-radius: 10px;     
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-} 
-.search-bar input { 
-    width: 94%; 
-    padding: 10px; 
+    display: flex;
+    justify-content: center; 
+}
+.search-bar input {    
+    width: 95%;
+    padding: 10px;    
     border-radius: 5px; 
-    border: none; 
+    border: none;    
     font-size: 1em; 
-    background: #2c003e; 
+    background: #2c003e;    
     color: #fff; 
-} 
+}
 .sort-bar { 
     display: flex; 
     justify-content: center; 
