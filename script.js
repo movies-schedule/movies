@@ -6,7 +6,7 @@ async function displayMovies(movies) {
 
     for (const movie of movies) { 
         const movieElement = document.createElement('div'); 
-        movieElement.classList.add('movie'); 
+        movieElement.classList.add('movie');
 
         const genres = movie.genre.map(g => g.name).join(', '); 
 
@@ -32,38 +32,39 @@ async function displayMovies(movies) {
               </div>
             </div>
         `;
-        movieElement.addEventListener('click', async () => { 
+        movieElement.addEventListener('click', async () => {             
             const detailsElement = movieElement.querySelector('.movie-details-text');
             const loadingAnimation = movieElement.querySelector('.loading-animation');
-
             movieElement.classList.toggle('active');
             if (movieElement.classList.contains('active')) {
                 detailsElement.parentElement.style.display = 'block';
+                movieElement.style.height = 'auto';
                 setTimeout(() => {
-                    detailsElement.parentElement.style.opacity = '1';
+                    detailsElement.parentElement.style.opacity = '1';                    
                     detailsElement.parentElement.style.transform = 'translateY(0)';
-                }, 10);
+                }, 10);            
             } else {
-                detailsElement.parentElement.style.opacity = '0';
+                detailsElement.parentElement.style.opacity = '0';            
                 detailsElement.parentElement.style.transform = 'translateY(-5px)';
-                setTimeout(() => {
+                setTimeout(() => {                
                     detailsElement.parentElement.style.display = 'none';
                 }, 250);
+                movieElement.style.height = (200) + 'px';
             }
-            if (!detailsElement.innerHTML) {
+            if (!detailsElement.innerHTML) {                
                 loadingAnimation.style.display = 'block';
-                const description = await fetchDescription(movie.url);
+                const description = await fetchDescription(movie.url);              
                 detailsElement.innerHTML = description;
-                loadingAnimation.style.display = 'none';
+                loadingAnimation.style.display = 'none';          
             }
         });
-        
+
         const scheduleButton = movieElement.querySelector(`#schedule-button-${movie.id}`);
         scheduleButton.addEventListener('click', (event) => {
             event.stopPropagation();
             displaySchedule(movie.id);
         });
-        
+
         movieBlock.appendChild(movieElement); 
     }
 }
@@ -118,7 +119,7 @@ async function init() {
             }
         }
     });
-    
+
     const movies = await fetchMovies(); 
     const searchInput = document.getElementById('search-input');
     const sortYearButton = document.getElementById('sort-year'); 
