@@ -1,4 +1,4 @@
-import { appUrl, fetchMovies, fetchDescription, sortMovies, displaySchedule } from './utils.js';
+import { appUrl, fetchMovies, fetchDescription, fetchLink, sortMovies, displaySchedule } from './utils.js';
 
 async function displayMovies(movies) { 
     const movieBlock = document.getElementById('movie-block'); 
@@ -25,10 +25,10 @@ async function displayMovies(movies) {
             <div class="movie-details">
               <div class="loading-animation"></div>
               <div class="movie-details-text"></div>
-              <div class="movie-details-buttons">
-                <form action="https://kino.mail.ru${movie.url}#ticket"><button class="button">Купить билеты</button></form>
-                <form action="https://kino.mail.ru${movie.url}#trailer"><button class="button">Смотреть трейлер</button></form>
-                <button class="button" id="schedule-button-${movie.id}">Смотреть расписание</button>
+              <div class="movie-details-buttons"> 
+                    <form action="https://kino.mail.ru${movie.url}#ticket"><button class="button">Купить билеты</button></form> 
+                    <button class="button" id="trailer-button-${movie.id}">Смотреть трейлер</button> 
+                    <button class="button" id="schedule-button-${movie.id}">Смотреть расписание</button> 
               </div>
             </div>
         `;
@@ -58,7 +58,34 @@ async function displayMovies(movies) {
                 loadingAnimation.style.display = 'none';          
             }
         });
-
+        
+        const trailerButton = movieElement.querySelector(`#trailer-button-${movie.id}`);
+        trailerButton.addEventListener('click', async (event) => { 
+            event.stopPropagation();
+            const trailerLink = await fetchLink(movie.url);
+            const trailerIframe = document.getElementById('trailer-iframe'); 
+            trailerIframe.src = trailerLink;
+            const modal = document.getElementById('modal'); 
+            modal.style.display = 'flex';
+        }); 
+        
+        const closeModalButton = document.getElementById('close-modal'); 
+        closeModalButton.addEventListener('click', () => { 
+            const modal = document.getElementById('modal'); 
+            modal.style.display = 'none';
+            const trailerIframe = document.getElementById('trailer-iframe'); 
+            trailerIframe.src = '';
+        }); 
+        
+        window.addEventListener('click', (event) => { 
+            const modal = document.getElementById('modal'); 
+            if (event.target === modal) { 
+                modal.style.display = 'none';
+                const trailerIframe = document.getElementById('trailer-iframe'); 
+                trailerIframe.src = '';
+            }
+        });
+        
         const scheduleButton = movieElement.querySelector(`#schedule-button-${movie.id}`);
         scheduleButton.addEventListener('click', (event) => {
             event.stopPropagation();
