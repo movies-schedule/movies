@@ -160,7 +160,6 @@ html::-webkit-scrollbar {
 .help-panel textarea, 
 .help-panel button { 
     width: 100%;
-    max-width: 300px;
     box-sizing: border-box; 
     margin-left: auto; 
     margin-right: auto; 
