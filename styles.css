@@ -189,22 +189,15 @@ html::-webkit-scrollbar {
     background: #fff;
     color: #2c003e;
 }
-#help-response {
+#help-response { 
     display: none; 
-    margin-top: 10px;
-    color: #b3b3b3;
-    max-height: 200px;
-    overflow: hidden;
-    padding: 10px;
-    border: 1px solid #4B0082;
-    border-radius: 5px;
-    position: relative;
-}
-#help-response::-webkit-scrollbar {
-    display: none; 
-}
-#help-response {
-    scrollbar-width: none;
+    margin-top: 10px; 
+    color: #b3b3b3; 
+    max-height: 200px; 
+    overflow-y: auto; 
+    padding: 10px; 
+    border: 1px solid #4B0082; 
+    border-radius: 5px; 
 }
 .container {
     width: 90%; 
