@@ -194,10 +194,17 @@ html::-webkit-scrollbar {
     margin-top: 10px;
     color: #b3b3b3;
     max-height: 200px;
-    overflow-y: auto;
+    overflow: hidden;
     padding: 10px;
     border: 1px solid #4B0082;
     border-radius: 5px;
+    position: relative;
+}
+#help-response::-webkit-scrollbar {
+    display: none; 
+}
+#help-response {
+    scrollbar-width: none;
 }
 .container {
     width: 90%; 
