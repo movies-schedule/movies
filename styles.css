@@ -220,8 +220,7 @@ html::-webkit-scrollbar {
     border: none; 
     font-size: 1em; 
     background: #2c003e; 
-    color: #fff; 
-    box-sizing: border-box;
+    color: #fff;
 }
 .sort-bar { 
     display: flex; 
