@@ -1,4 +1,4 @@
-export const appUrl = `https://a74a-34-48-42-92.ngrok-free.app`
+export const appUrl = `https://96e5-34-127-61-211.ngrok-free.app`
 
 export async function fetchMovies() { 
     const response = await fetch(`${appUrl}/get-movies`, {
